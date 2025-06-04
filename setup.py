@@ -11,7 +11,7 @@ def get_requirements(file_path:str)->List:
         requirements.remove(HIPEN_E_DOT)
     return requirements
 setup(
-    name='mlproject',
+    name='diseaseproject',
     version='0.0.1',
     author='shiva kumar',
     author_email='shivakumar2222@gmail.com',
