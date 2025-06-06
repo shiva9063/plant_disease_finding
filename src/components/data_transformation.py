@@ -21,7 +21,7 @@ class DataTransformation:
         self.data_transformation_config=DataTransformationConfig()
     def get_data_transformer_obj(self):
         try:
-            IMG_SIZE=224
+            IMG_SIZE=225
             resize_and_rescale=tf.keras.Sequential([
                 layers.experimental.preprocessing.Resizing(IMG_SIZE,IMG_SIZE),
                 layers.experimental.preprocessing.Rescaling(1.0/224)
