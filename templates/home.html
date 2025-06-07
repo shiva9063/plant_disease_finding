@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='basic.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="preview">
+            <img id="previewImage" src="{{ url_for('static', filename='placeholder.png') }}" alt="Image Preview">
+        </div>
+        <div class="form-area">
+            <h1>Upload Plant Image</h1>
+            <form class="image-form" action="/predictdata" method="post" enctype="multipart/form-data">
+                <label for="file">Choose an image:</label>
+                <input type="file" id="file" name="file" accept="image/*">
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if result %}
+                <h2>{{ result }}</h2>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('previewImage');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

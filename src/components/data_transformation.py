@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras import models,layers
 from tensorflow import keras
 from tensorflow.keras.utils import save_img
+from tensorflow.keras.models import Sequential
 
 
 import os
@@ -29,8 +30,8 @@ class DataTransformation:
             ])
             logging.info('resizing completed')
             data_agumentation=tf.keras.Sequential([
-                layers.experimental.preprocessing.RandomFlip('horizantal_and_vertical'),
-                layers.experimental.preprocessing.RandomRotation(0.2)
+                layers.RandomFlip('horizantal_and_vertical'),
+                layers.RandomRotation(0.2)
             ])
             logging.info('data agumentation is completed')
             return resize_and_rescale,data_agumentation

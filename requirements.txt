@@ -4,5 +4,6 @@ matplot
 scikit-learn
 tensorflow
 seaborn
+flask
 keras
 #-e .
