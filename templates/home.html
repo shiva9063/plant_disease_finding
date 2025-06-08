@@ -13,9 +13,10 @@
         </div>
         <div class="form-area">
             <h1>Upload Plant Image</h1>
-            <form class="image-form" action="/predictdata" method="post" enctype="multipart/form-data">
+
+            <form class="image-form" action="/predictdata" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <label for="file">Choose an image:</label>
-                <input type="file" id="file" name="file" accept="image/*">
+                <input type="file" id="file" name="file" accept="image/*" >
                 <button type="submit">Predict</button>
             </form>
 
@@ -25,15 +26,30 @@
         </div>
     </div>
 
-    <script>
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function () {
-                const output = document.getElementById('previewImage');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
+<script>
+    // Preview selected image
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const output = document.getElementById('previewImage');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    // Validate file input before submitting
+    function validateForm() {
+        const fileInput = document.getElementById('file');
+        if (!fileInput.files || fileInput.files.length === 0) {
+            alert("Please choose an image before predicting.");
+            return false; // Prevent form submission
         }
-    </script>
+        return true; // Proceed if file selected
+    }
+
+    // Attach image preview to file input change
+    document.getElementById('file').addEventListener('change', previewImage);
+</script>
+
 </body>
 </html>
