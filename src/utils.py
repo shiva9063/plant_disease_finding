@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import dill
 import os
 from src.exception import CustomException

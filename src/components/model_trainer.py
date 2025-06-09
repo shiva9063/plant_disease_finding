@@ -1,7 +1,5 @@
 import numpy as np
-import seaborn as sns
 import tensorflow as tf
-import matplotlib.pyplot as plt
 from tensorflow.keras import models,layers
 from tensorflow.keras.utils import save_img
 from tensorflow.keras.models import Sequential
@@ -13,6 +11,7 @@ import sys
 from src.exception import CustomException
 from dataclasses import dataclass
 from sklearn.metrics import accuracy_score
+
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path=os.path.join('artifacts','model.keras')
@@ -33,7 +32,7 @@ class ModelTrainer:
             layers.RandomFlip('horizantal_and_vertical'),
             layers.RandomRotation(0.2)
             ])
-            CHANNEL=3
+            CHANNEL=3   #RGB
             input_shape=(BATCH_SIZE,IMAGE_SIZE,IMAGE_SIZE,CHANNEL)
             model=models.Sequential([
                 resize_and_rescale,

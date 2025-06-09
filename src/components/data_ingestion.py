@@ -1,8 +1,6 @@
-import numpy as np
-import seaborn as sns
+# importing dependices
+
 import tensorflow as tf
-import matplotlib.pyplot as plt
-from tensorflow.keras import models, layers
 from tensorflow.keras.utils import save_img
 from src.components.model_trainer import ModelTrainerConfig, ModelTrainer
 
@@ -12,7 +10,7 @@ import sys
 from src.exception import CustomException
 from dataclasses import dataclass
 
-@dataclass
+@dataclass  #  the __init__ method is automatically generated
 class DataIngestionConfig:
     train_data_path: str = os.path.join('artifacts', 'train')
     test_data_path: str = os.path.join('artifacts', 'test')
@@ -27,7 +25,7 @@ class DataIngestion:
         logging.info('Reading the data...')
         try:
             IMAGE_SIZE = 225
-            BATCH_SIZE = 8
+            BATCH_SIZE = 8  # the total images divide into 8 batches
 
             dataset = tf.keras.preprocessing.image_dataset_from_directory(
                 r'C:\Users\n shiva kumar\OneDrive\Desktop\image_classification\notebook\data',
